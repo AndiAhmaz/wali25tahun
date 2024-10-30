@@ -157,6 +157,21 @@
     transform: scale(1.1);
 }
 
+@keyframes zoomInOut {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+h1 {
+    color: #0e9429;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    animation: zoomInOut 2s infinite;
+}
 
     </style>
 </head>
@@ -167,7 +182,7 @@
         <div class="card">
             <h4>Selamat Ulang Tahun ke-25<br></h4>
         <h1>Wali Band</h1>
-            <p>Terima kasih atas karya dan inspirasimu selama ini. Tetap berkarya dan menginspirasi!</p>
+            <p id="typingText">Terima kasih atas karya dan inspirasimu selama ini. Tetap berkarya dan menginspirasi!</p>
             <a href="https://www.instagram.com/andy_parawali" target="_blank" class="instagram-icon">
                 <img src="img/ig.png" alt="Instagram" width="30">
                 <span>andy_parawali</span>
@@ -226,3 +241,5 @@
     </script>
 </body>
 </html>
+<script src="script.js"></script>
+
