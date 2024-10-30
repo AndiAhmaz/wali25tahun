@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun Wali Band ke-25</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background Slider */
+        .bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-size: cover;
+            background-position: center;
+            animation: slideBackground 12s infinite;
+        }
+
+        /* Ganti gambar setiap 4 detik */
+        @keyframes slideBackground {
+            0% { background-image: url('img/4.png'); }
+            33% { background-image: url('img/1.png'); }
+            66% { background-image: url('img/2.png'); }
+            100% { background-image: url('img/3.png'); }
+        }
+
+        .container {
+            perspective: 1000px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2em;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .card:hover {
+            transform: rotateY(20deg) rotateX(10deg);
+        }
+
+        h1 {
+            color: #0e9429;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333;
+            font-size: 1em;
+        }
+
+        /* Style untuk animasi bintang */
+        .star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999; /* pastikan berada di atas elemen lainnya */
+            animation: fadeOut 0.7s linear;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .music-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .music-icon {
+            width: 20px;
+            height: 20px;
+                    }
+                    .instagram-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: #333;
+    font-size: 1em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.instagram-icon:hover {
+    color: #0e9429; /* Warna teks saat di-hover */
+}
+
+.instagram-icon img {
+    width: 30px;
+    transition: transform 0.3s;
+}
+
+.instagram-icon img:hover {
+    transform: scale(1.1);
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="bg-slider"></div> <!-- Background Slider -->
+
+    <div class="container">
+        <div class="card">
+            <h4>Selamat Ulang Tahun ke-25<br></h4>
+        <h1>Wali Band</h1>
+            <p>Terima kasih atas karya dan inspirasimu selama ini. Tetap berkarya dan menginspirasi!</p>
+            <a href="https://www.instagram.com/andy_parawali" target="_blank" class="instagram-icon">
+                <img src="img/ig.png" alt="Instagram" width="30">
+                <span>andy_parawali</span>
+            </a>
+        </div>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="img/5.mpeg" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Tambahkan tombol untuk play/pause musik -->
+    <button class="music-btn" onclick="toggleMusic()">
+        <span class="music-icon">🎵</span>
+        <span id="musicText">Play Music</span>
+    </button>
+
+    <script>
+        // ... (script bintang yang sama seperti sebelumnya) ...
+
+        // Tambahan script untuk mengontrol musik
+        const bgMusic = document.getElementById('bgMusic');
+        const musicText = document.getElementById('musicText');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicText.textContent = 'Play Music';
+            } else {
+                bgMusic.play();
+                musicText.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        }
+
+
+        // Fungsi untuk membuat elemen bintang di lokasi kursor
+        function createStar(e) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            document.body.appendChild(star);
+
+            // Set posisi bintang mengikuti kursor
+            star.style.left = `${e.pageX}px`;
+            star.style.top = `${e.pageY}px`;
+
+            // Hapus bintang setelah animasi selesai
+            star.addEventListener("animationend", () => {
+                star.remove();
+            });
+        }
+
+        // Tambahkan event listener untuk membuat bintang saat kursor bergerak
+        document.addEventListener("mousemove", createStar);
+    </script>
+</body>
+</html>
